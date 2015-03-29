@@ -34,9 +34,9 @@ def reset_db():
 
 
 if __name__ == '__main__':       
-    helpers.send_game_alert(1)
-    #reset_db()
-    #reset_game_db()
+  #  helpers.send_game_alert(1)
+  #  reset_db()
+    reset_game_db()
 
 
     

@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True)
     email = db.Column(db.String(80), unique=True)
-    password = db.Column(db.String(10))
+    password = db.Column(db.String(255))
     registered_on = db.Column(db.DateTime)
     validated = db.Column(db.Boolean, default=False)
     validated_on = db.Column(db.DateTime)

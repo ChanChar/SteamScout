@@ -13,6 +13,7 @@ app = Flask(__name__)
 
 app.config.from_object('config')
 db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] 
 Bootstrap(app)
 flask_bcrypt = Bcrypt(app)
 

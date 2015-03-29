@@ -22,11 +22,11 @@ def home():
 def games(page=1):
     
     game_search_form = GamesSearch()
-    # all_games = Games.query.order_by(Games.game_name).paginate(page, 10, False)
+    #all_games = Games.query.order_by(Games.game_name).paginate(page, 10, False)
 
     if request.method == "POST" and game_search_form.validate():
         search_term = game_search_form.search_term.data
-        games_found = Games.query.filter(Games.game_name.like("%{}%".format(search_term)))
+        games_found = Games.query.filter(Games.game_name.ilike("%{}%".format(search_term)))
         found_count = games_found.count()
         game_search_form = GamesSearch()
         return render_template(
@@ -34,7 +34,7 @@ def games(page=1):
             games_found=games_found, found_count=found_count)
     else:
         return render_template(
-            'games.html', game_search_form=game_search_form)
+            'games.html', game_search_form=game_search_form) #,  all_games=all_games)
             # add all_games here if pagination is wanted.
 
 @app.route('/games/<game_name>', methods=['GET', 'POST'])
